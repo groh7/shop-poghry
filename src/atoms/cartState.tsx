@@ -16,3 +16,5 @@ export const cartState = atom<ProductType[]>({
   key: "cartState",
   default: [],
 });
+
+// komentarz sprawdzenie
