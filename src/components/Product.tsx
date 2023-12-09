@@ -27,7 +27,7 @@ function Product({ product }: ProductPropsType) {
       ));
     }
 
-    // Other logic you want to perform when adding to the cart
+
   };
 
   return (
