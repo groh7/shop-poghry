@@ -31,13 +31,19 @@ function Product({ product }: ProductPropsType) {
   };
 
   return (
-    <div>
-      <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <button onClick={addItemsToCart}>Add to cart</button>
-      <hr />
-    </div>
-  );
-}
+      <div className="flex flex-col border p-4 mb-4">
+        <h2 className="text-xl font-bold mb-2">{product.name}</h2>
+        <p className="text-gray-600 mb-4">{product.description}</p>
+        <button
+          onClick={addItemsToCart}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+        >
+          Add to Cart
+        </button>
+        <hr className="my-4 border-t" />
+      </div>
+    );
+  };
+
 
 export default Product;
