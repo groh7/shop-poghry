@@ -32,9 +32,9 @@ export default function Home() {
   <RecoilRoot>
 
     <Navbar />
-
+    <div className="flex flex-wrap justify-center">
     {products.map(product => (<Product product={product} />))}
-
+    </div>
 
 
   </RecoilRoot>
