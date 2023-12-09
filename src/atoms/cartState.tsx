@@ -19,3 +19,4 @@ export const cartState = atom<ProductType[]>({
 
 // komentarz sprawdzenie
 // drugi komentarz sprawdzający
+// trzeci komentarz testowy
