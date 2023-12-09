@@ -1,15 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  /* Ustawienie czcionki dla całej strony */
   body {
     font-family: 'Arial', sans-serif;
   }
   
-  /* Ustawienia kolorów */
   :root {
     --primary-color: #3490dc;
     --secondary-color: #ffed4a;
@@ -52,7 +78,11 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+
+  body {
+  background-color: #333;
+  }
+
   button {
     padding: 0.5rem 1rem;
     background-color: var(--primary-color);
@@ -64,4 +94,12 @@ h1 {
   
   button:hover {
     background-color: #2672b1;
+  }
+
+  .product {
+    background-color: white;
+  }
+
+  .cart:hover {
+    transform: scale(1.1);
   }
