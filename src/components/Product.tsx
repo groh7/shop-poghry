@@ -1,16 +1,10 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { cartState } from "../atoms/cartState";
+import { ProductType } from '../atoms/cartState';
 
 type ProductPropsType = {
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    photo: string;
-    availability: number;
-  };
+  product: ProductType
 };
 
 function Product({ product }: ProductPropsType) {

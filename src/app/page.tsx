@@ -29,7 +29,7 @@ export default function Home() {
  
 
   return (
-  <RecoilRoot>
+    <RecoilRoot>
 
     <Navbar />
 
@@ -37,6 +37,6 @@ export default function Home() {
 
 
 
-  </RecoilRoot>
+    </RecoilRoot>
   )
 }
