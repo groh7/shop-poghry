@@ -1,12 +1,8 @@
-"use client"
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
+import Product from "@/models/product";
 import { useState } from "react";
-import { useRecoilState, RecoilRoot } from 'recoil'
-import Navbar from '@/components/Navbar';
-import Product from '@/models/product';
-
+import dbConnect from "@/utils/dbConnect";
 
 // export type ProductAddType = {
 //     name: string;
@@ -17,70 +13,63 @@ import Product from '@/models/product';
 // }
 
 export default function AddProduct() {
-    
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        price: 0,
-        photo: '',
-        availability: 0
-    })
+  const [formData, setFormData] = useState({
+    id: "1000",
+    name: "",
+    description: "",
+    price: 0,
+    photo: "",
+    availability: 0,
+  });
 
-    async function AddToBase(){
-        // generowanie 'id'
-        const id = 100;
+  async function AddToBase(e: any) {
+    // generowanie 'id'
+    try {
+      e.preventDefault();
 
-        await Product.create({
-            id: id,
-            name: formData.name,
-            description: formData.description,
-            price: formData.price,
-            photo: formData.photo,
-            availability: formData.availability
-        })
+      const response = await fetch("http://localhost:3000/api/products-add", {
+        method: "POST",
+      });
 
+      const data = await response.json();
+    } catch (err) {
+      console.log(err);
     }
- 
+  }
 
-    return (
+  return (
     <div>
-        xD
+      xD
+      <form onSubmit={AddToBase}>
+        <div>Nazwa:</div>
+        <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+        <div>Opis: </div>
+        <input
+          type="text"
+          value={formData.description}
+          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+        />
+        <div>Cena: </div>
+        <input
+          type="number"
+          value={formData.price}
+          onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
+        />
+        <div>Photo link: </div>
+        <input
+          type="text"
+          value={formData.photo}
+          onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
+        />
+        <div>Dostępność w sztukach: </div>
+        <input
+          type="number"
+          value={formData.availability}
+          onChange={(e) => setFormData({ ...formData, availability: Number(e.target.value) })}
+        />
 
-        <form onSubmit={AddToBase}>
-                <div>Nazwa:</div>
-                <input
-                    type='text'
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                />
-                <div>Opis: </div>
-                <input
-                    type='text'
-                    value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                />
-                <div>Cena: </div>
-                <input
-                    type='number'
-                    value={formData.price}
-                    onChange={(e) => setFormData({ ...formData, price: Number(e.target.value) })}
-                />
-                <div>Photo link: </div>
-                <input
-                    type='text'
-                    value={formData.photo}
-                    onChange={(e) => setFormData({ ...formData, photo: e.target.value })}
-                />
-                <div>Dostępność w sztukach: </div>
-                <input
-                    type='number'
-                    value={formData.availability}
-                    onChange={(e) => setFormData({ ...formData, availability: Number(e.target.value) })}
-                />
-
-                <input type="submit" value="Udostępnij produkt"/>
-        </form>
-        
+        <input type="submit" value="Udostępnij produkt" />
+      </form>
     </div>
-    )
+  );
 }
