@@ -1,20 +1,17 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { cartState } from '../atoms/cartState';
+import { useState } from 'react';
+import ReactDOM from "react-dom/client";
+import { ProductType } from '../atoms/cartState';
 
 type ProductPropsType = {
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    photo: string;
-    availability: number;
-  };
+  product: ProductType
 };
 
 function Product({ product }: ProductPropsType) {
   const [cart, setCart] = useRecoilState(cartState);
+  
 
   const addItemsToCart = () => {
     const productIndex = cart.findIndex(item => item.id === product.id);
@@ -29,6 +26,7 @@ function Product({ product }: ProductPropsType) {
       );
     }
   };
+  
 
   return (
     <div className="w-1/4 p-4">

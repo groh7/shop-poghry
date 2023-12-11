@@ -16,6 +16,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center space-x-4">
+        
+        <Link href="/add-product" className="relative">
+          Add Product
+        </Link>
+        
         <Link href="/cart" className="relative">
           <div>
           <span className="cart text-right text-white flex items-center justify-center">
