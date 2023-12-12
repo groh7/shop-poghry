@@ -3,14 +3,7 @@
 import Product from "@/models/product";
 import { useState } from "react";
 import dbConnect from "@/utils/dbConnect";
-
-// export type ProductAddType = {
-//     name: string;
-//     description: string;
-//     price: number;
-//     photo: string;
-//     availability: number;
-// }
+import Navbar from "@/components/Navbar";
 
 export default function AddProduct() {
   const [formData, setFormData] = useState({
@@ -23,7 +16,6 @@ export default function AddProduct() {
   });
 
   async function AddToBase(e: any) {
-    // generowanie 'id'
     try {
       e.preventDefault();
 
@@ -39,8 +31,9 @@ export default function AddProduct() {
 
   return (
     <div>
-      xD
-      <form onSubmit={AddToBase}>
+    <Navbar />
+    <div className="flex items-center justify-center">
+      <form className="text-center addItem" onSubmit={AddToBase}>
         <div>Nazwa:</div>
         <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
         <div>Opis: </div>
@@ -67,9 +60,10 @@ export default function AddProduct() {
           value={formData.availability}
           onChange={(e) => setFormData({ ...formData, availability: Number(e.target.value) })}
         />
-
-        <input type="submit" value="Udostępnij produkt" />
+        <div></div>
+        <input className="submit mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" value="Udostępnij produkt" />
       </form>
+    </div>
     </div>
   );
 }

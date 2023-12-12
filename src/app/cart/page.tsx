@@ -16,13 +16,13 @@ const ProductsList: React.FC<JSX.Element> = () => {
 
   return (
     //otypowac
-    <div>
+    <div className=" cart flex flex-col items-center">
       {products.map((product: any, index: number) => (
-        <div style={{ display: "flex" }}>
+        <div key={index} className=" cartElement flex items-center justify-between w-full">
           <div>
-            {index}.{product.name}
+            {index + 1}. {product.name}
           </div>
-          <button>Remove</button>
+          <button className="ml-2">Remove</button>
         </div>
       ))}
     </div>

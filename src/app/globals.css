@@ -80,7 +80,10 @@ h1 {
   }
 
   body {
+  display: flex;
+  flex-wrap: wrap;
   background-color: #333;
+  min-height: 100vh;
   }
 
   button {
@@ -100,6 +103,35 @@ h1 {
     background-color: white;
   }
 
-  .cart:hover {
+  .cartIcon:hover {
     transform: scale(1.1);
+  }
+
+  .addItem {
+    width: 100vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+  }
+
+  .addItem input {
+    width: 400px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .addItem .submit {
+    cursor: pointer;
+  }
+
+  .cart {
+    width: 100vw;
+    margin-top: 50px;
+  }
+
+  .cartElement {
+    width: 50vw;
+    padding-top: 10px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
   }

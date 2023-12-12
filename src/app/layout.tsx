@@ -1,4 +1,4 @@
-import { ShopProvider } from "@/providers/shopContext";
+import { ShopProvider } from "@/providers/ShopContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

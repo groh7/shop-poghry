@@ -1,4 +1,4 @@
-import { useShopContext } from "@/providers/shopContext";
+import { useShopContext } from "@/providers/ShopContext";
 
 function Product({ product }: any) {
   const { cart, setCart } = useShopContext();

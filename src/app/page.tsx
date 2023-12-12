@@ -3,7 +3,7 @@
 //import styles from './page.module.css'
 import Navbar from "@/components/Navbar";
 import Product from "@/components/Product";
-import { useShopContext } from "@/providers/shopContext";
+import { useShopContext } from "@/providers/ShopContext";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -33,6 +33,7 @@ export default function Home() {
           alignItems: "center",
           textAlign: "center",
           height: "100vh",
+          width: "100vw",
         }}
       >
         <p className="p-4">You have to log in</p>
@@ -50,7 +51,7 @@ export default function Home() {
     // <ShopProvider>
     <div>
       <Navbar />
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className=" main flex flex-wrap">
         {products.map((product, index) => (
           <Product product={product} key={index} />
         ))}
