@@ -34,6 +34,7 @@ body {
   
   body {
     font-family: 'Arial', sans-serif;
+    color: black;
   }
   
   :root {
@@ -116,6 +117,7 @@ h1 {
   .addItem input {
     width: 400px;
     font-size: 20px;
+    color: black;
     text-align: center;
   }
 
