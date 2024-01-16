@@ -15,25 +15,53 @@ export default function AddProduct() {
     availability: 0,
   });
 
-  async function AddToBase(e: any) {
-    try {
-      e.preventDefault();
+  const handleInputChange = (e:any) => {
+    const { name, value } = e.currentTarget;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
-      const response = await fetch("http://localhost:3000/api/products-add", {
-        method: "POST",
+  // async function AddToBase(e: any) {
+  //   try {
+  //     e.preventDefault();
+
+  //     const response = await fetch("http://localhost:3000/api/products-add", {
+  //       method: "POST",
+  //     });
+
+  //     const data = await response.json();
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+
+  const handleSubmit = (e:any) => {
+    e.preventDefault();
+    console.log(JSON.stringify(formData))
+    fetch("http://localhost:3000/api/products-add", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Product added successfully', response);
+        } else {
+          console.error('Error adding product:', response.statusText);
+        }
+      })
+      .catch((error) => {
+        console.error('Error adding product:', error);
       });
-
-      const data = await response.json();
-    } catch (err) {
-      console.log(err);
-    }
-  }
+  };
+  
 
   return (
     <div>
     <Navbar />
     <div className="flex items-center justify-center">
-      <form className="text-center addItem" onSubmit={AddToBase}>
+      <form className="text-center addItem" onSubmit={handleSubmit}>
         <div>Nazwa:</div>
         <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
         <div>Opis: </div>
