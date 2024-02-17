@@ -47,12 +47,15 @@ export default function AddProduct() {
       .then((response) => {
         if (response.ok) {
           console.log('Product added successfully', response);
+          alert("Product added successfully");
         } else {
           console.error('Error adding product:', response.statusText);
+          alert("Error adding product")
         }
       })
       .catch((error) => {
         console.error('Error adding product:', error);
+        alert("Error adding product");
       });
   };
   
