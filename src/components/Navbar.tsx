@@ -21,6 +21,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center space-x-4">
+        <Link href="/update-products" className="relative">
+          Edit products
+        </Link>
         <Link href="/add-product" className="relative">
           Add Product
         </Link>

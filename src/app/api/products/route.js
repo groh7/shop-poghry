@@ -78,3 +78,28 @@ export async function GET(req) {
 
   return NextResponse.json(products);
 }
+
+export async function PUT(req, res) {
+  dbConnect()
+
+  const { id, name, description, price, photo, availability } = await req.json()
+
+  console.log(req);
+
+  try {
+    const product = await Product.findOneAndUpdate(
+      { id },
+      { name, description, price, photo, availability },
+      { new: true }
+    )
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' })
+    }
+
+    return res.status(200).json(product)
+  } catch (error) {
+    console.error('Error updating product:', error)
+    return res.status(500).json({ message: 'Internal server error' })
+  }
+}
