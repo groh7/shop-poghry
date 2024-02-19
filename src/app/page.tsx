@@ -23,29 +23,29 @@ export default function Home() {
     getData();
   }, []);
 
-  if (user === null)
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
-        <p className="p-4">You have to log in</p>
-        <button
-          onClick={() => {
-            setUser(true);
-          }}
-        >
-          Log in
-        </button>
-      </div>
-    );
+  // if (user === null)
+  //   return (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         flexDirection: "column",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         textAlign: "center",
+  //         height: "100vh",
+  //         width: "100vw",
+  //       }}
+  //     >
+  //       <p className="p-4">You have to log in</p>
+  //       <button
+  //         onClick={() => {
+  //           setUser(true);
+  //         }}
+  //       >
+  //         Log in
+  //       </button>
+  //     </div>
+  //   );
 
   return (
     // <ShopProvider>
