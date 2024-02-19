@@ -1,31 +1,16 @@
-import React from 'react';
-import { useRecoilState } from 'recoil';
-import { cartState } from '../atoms/cartState';
+import { useShopContext } from "@/providers/ShopContext";
 
-type ProductPropsType = {
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    price: number;
-    photo: string;
-    availability: number;
-  };
-};
-
-function Product({ product }: ProductPropsType) {
-  const [cart, setCart] = useRecoilState(cartState);
+function Product({ product }: any) {
+  const { cart, setCart } = useShopContext();
 
   const addItemsToCart = () => {
-    const productIndex = cart.findIndex(item => item.id === product.id);
+    const productIndex = cart.findIndex((item: any) => item.id === product.id);
 
     if (productIndex === -1) {
       setCart([...cart, product]);
     } else {
-      setCart(prevCart =>
-        prevCart.map(item =>
-          item.id === product.id ? { ...item, quantity: (item.quantity || 1) + 1 } : item
-        )
+      setCart((prevCart: any) =>
+        prevCart.map((item: any) => (item.id === product.id ? { ...item, quantity: (item.quantity || 1) + 1 } : item))
       );
     }
   };
@@ -37,7 +22,8 @@ function Product({ product }: ProductPropsType) {
         <p className="text-gray-600 mb-4 text-center">{product.description}</p>
         <button
           onClick={addItemsToCart}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none">
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none"
+        >
           Add to Cart
         </button>
       </div>
