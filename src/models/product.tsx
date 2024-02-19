@@ -9,6 +9,17 @@ export type SchemaType = {
   availability: Number;
 };
 
+export type ProductType = {
+  id: String;
+  name: String;
+  description: String;
+  price: Number;
+  photo: String;
+  availability: Number;
+  quantity?: Number;
+};
+
+
 const productSchema = new mongoose.Schema<SchemaType>(
   {
     id: {
