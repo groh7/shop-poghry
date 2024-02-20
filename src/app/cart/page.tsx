@@ -2,6 +2,7 @@
 import { ProductType } from "@/models/product";
 import { useShopContext } from "@/providers/ShopContext";
 import React, { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
 
 const ProductsList: React.FC<JSX.Element> = () => {
   const [products, setProducts] = useState([]);
@@ -31,9 +32,16 @@ const ProductsList: React.FC<JSX.Element> = () => {
     });
   };
 
-  if (products === undefined || (Array.isArray(products) && products.length === 0)) return <div>No products available</div>;
+  if (products === undefined || (Array.isArray(products) && products.length === 0)) return (
+  <div>
+  <Navbar/>
+  <div className=" cart flex flex-col items-center text-white text-bold text-2xl">No products available.</div>;
+  </div>
+  );
 
   return (
+    <div>
+    <Navbar />
     <div className=" cart flex flex-col items-center">
       {products.map((product: ProductType, index: number) => (
         <div key={index} className=" cartElement flex items-center justify-between w-full">
@@ -45,6 +53,7 @@ const ProductsList: React.FC<JSX.Element> = () => {
           </button>
         </div>
       ))}
+    </div>
     </div>
   );
 };
