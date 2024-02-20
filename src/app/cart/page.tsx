@@ -11,7 +11,7 @@ const ProductsList: React.FC<JSX.Element> = () => {
     const storedData = localStorage.getItem("products");
 
     if (storedData) {
-      setCart(storedData);
+      setCart(typeof storedData === "string" ? JSON.parse(storedData) : storedData);
       setProducts(JSON.parse(storedData));
     }
   }, [cart]);

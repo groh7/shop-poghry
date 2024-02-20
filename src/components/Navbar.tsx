@@ -1,16 +1,16 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FiShoppingCart } from "react-icons/fi";
 import { UserButton } from "@clerk/nextjs";
 import { ShopContext } from "@/providers/ShopContext";
 //import { auth } from '@clerk/nextjs';
-import { SignedIn } from '@clerk/nextjs';
-import { SignedOut } from '@clerk/nextjs';
+import { SignedIn } from "@clerk/nextjs";
+import { SignedOut } from "@clerk/nextjs";
 
 const Navbar = () => {
- // const { user } = auth();
-  const { user, cart } = useContext(ShopContext); 
+  // const { user } = auth();
+  const { user, cart } = useContext(ShopContext);
   const router = useRouter();
 
   const handleGoToProductsList = () => {
@@ -26,29 +26,28 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center space-x-4">
-      
-      <SignedIn>
-        <>
-          <Link href="/update-products" className="relative">
-            Edit products
-          </Link>
-          <Link href="/add-product" className="relative">
-            Add Product
-          </Link>
-        </>
+        <SignedIn>
+          <>
+            <Link href="/update-products" className="relative">
+              Edit products
+            </Link>
+            <Link href="/add-product" className="relative">
+              Add Product
+            </Link>
+          </>
         </SignedIn>
         <SignedOut>
           <>
-            <Link href='/sign-in' className="relative">
+            <Link href="/sign-in" className="relative">
               Sign In
             </Link>
-            <Link href='/sign-up' className="relative">
+            <Link href="/sign-up" className="relative">
               Sign Up
             </Link>
           </>
-          </SignedOut>
+        </SignedOut>
         <div className="ml-auto">
-          <UserButton afterSignOutUrl='/' />
+          <UserButton afterSignOutUrl="/" />
         </div>
         <div onClick={handleGoToProductsList}>
           <span className="cartIcon text-right text-white flex items-center justify-center">
@@ -56,7 +55,8 @@ const Navbar = () => {
             <i>
               <FiShoppingCart size={24} />
             </i>
-            {cart.length})
+            {console.log(cart)}
+            {typeof cart === "string" ? JSON.parse(cart).length : cart.length})
           </span>
         </div>
       </div>
