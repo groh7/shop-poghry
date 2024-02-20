@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/utils/dbConnect";
 import Product from "@/models/product.tsx";
 
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 export async function GET(req) {
   dbConnect();
 
@@ -102,4 +105,33 @@ export async function PUT(req, res) {
     console.error('Error updating product:', error)
     return res.status(500).json({ message: 'Internal server error' })
   }
+}
+
+// stripe
+export async function POST(req, res) {
+  console.log("Connected to checkout");
+
+  const {product} = req.body;
+
+  const lineIteams = product.map((product)=>({
+    price_data: {
+      currency: "pln",
+      product_data:{
+       name: product.name
+      },
+      unit_amount: product.price * 100,
+    },
+    quantity: product.quantity?product.quantity : 1
+  }));
+
+  const session = await stripe.checkout.session.create({
+    payment_method_types:["card"],
+    line_iteams:lineIteams,
+    mode:"payment",
+    success_url:"",
+    cancel_url:""
+  });
+
+  res.json({id:session.id});
+
 }

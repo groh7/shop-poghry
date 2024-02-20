@@ -2,6 +2,7 @@
 import { ProductType } from "@/models/product";
 import { useShopContext } from "@/providers/ShopContext";
 import React, { useEffect, useState } from "react";
+import {loadStripe} from '@stripe/stripe-js';
 
 const ProductsList: React.FC<JSX.Element> = () => {
   const [products, setProducts] = useState([]);
@@ -31,6 +32,45 @@ const ProductsList: React.FC<JSX.Element> = () => {
     });
   };
 
+  // stripe
+  const createCheckoutSession = async () => {
+    const stripe = await loadStripe("pk_test_51OJu53BirogTRX6tgj8m5CDkhsMWIAKpGoda1AJfWxjnZV86IbTatK8Qq89fQe05pVDVB4n3UAZrqynFfmEoBBIb00RlmH5aSL");
+    
+    const productsArrayOfArrays = products.map((product:ProductType) => [product.name, product.price]);
+
+    const body = {
+      products: productsArrayOfArrays
+    };
+
+    const headers = {
+      "Content-Type":"application/json"
+    }
+
+    console.log('Trying to connect to checkout');
+  
+
+    // {"products":[["iPhone 15",7700]]}
+    console.log(JSON.stringify(body));
+    const strigifiedBody = JSON.stringify(body);
+    
+    // try{
+      const response = await fetch('http://localhost:3000/api/products',{
+        method:"POST",
+        headers:headers,
+        body:strigifiedBody
+      })
+
+      const session = await response.json();
+
+      const result = stripe?.redirectToCheckout({
+        sessionId:session.id
+      });
+    // } catch(error) {
+    //   console.log("Connection error");
+    //   console.log(error);
+    // }
+  }
+
   if (products === undefined || (Array.isArray(products) && products.length === 0)) return <div>No products available</div>;
 
   return (
@@ -45,6 +85,9 @@ const ProductsList: React.FC<JSX.Element> = () => {
           </button>
         </div>
       ))}
+      <div>
+        <button onClick={createCheckoutSession}>Checkout</button>
+      </div>
     </div>
   );
 };
