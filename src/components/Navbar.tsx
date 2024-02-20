@@ -5,6 +5,8 @@ import { FiShoppingCart } from "react-icons/fi";
 import { UserButton } from "@clerk/nextjs";
 import { ShopContext } from "@/providers/ShopContext";
 //import { auth } from '@clerk/nextjs';
+import { SignedIn } from '@clerk/nextjs';
+import { SignedOut } from '@clerk/nextjs';
 
 const Navbar = () => {
  // const { user } = auth();
@@ -24,7 +26,8 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex items-center space-x-4">
-      {user && (
+      
+      <SignedIn>
         <>
           <Link href="/update-products" className="relative">
             Edit products
@@ -33,8 +36,8 @@ const Navbar = () => {
             Add Product
           </Link>
         </>
-      )}
-        {!user && (
+        </SignedIn>
+        <SignedOut>
           <>
             <Link href='/sign-in' className="relative">
               Sign In
@@ -43,7 +46,7 @@ const Navbar = () => {
               Sign Up
             </Link>
           </>
-        )}
+          </SignedOut>
         <div className="ml-auto">
           <UserButton afterSignOutUrl='/' />
         </div>
