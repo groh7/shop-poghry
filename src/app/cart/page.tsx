@@ -88,7 +88,7 @@ const ProductsList: React.FC<JSX.Element> = () => {
           <div>
             {index + 1}. {product.name}
           </div>
-          <button className="ml-2" onClick={() => removeItemsFromCart(product.id, product)}>
+          <button className="ml-2 remove" onClick={() => removeItemsFromCart(product.id, product)}>
             Remove
           </button>
         </div>

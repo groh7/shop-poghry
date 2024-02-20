@@ -138,3 +138,17 @@ h1 {
     color: white;
     font-size: 20px;
   }
+
+  .navbar {
+    background-color: #0D0D0D;
+    border:#333 2px solid;
+    margin-bottom: 30px;
+  }
+
+  .link {
+    color: white;
+  }
+
+  .remove:hover {
+    background-color: red;
+  }

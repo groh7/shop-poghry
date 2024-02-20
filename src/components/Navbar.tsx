@@ -19,29 +19,29 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center p-4">
+    <div className="navbar flex justify-between items-center p-4">
       <div className="flex items-center">
-        <Link href="/" className="relative">
+        <Link href="/" className="relative link">
           <div className="w-80 ">SKLEP</div>
         </Link>
       </div>
       <div className="flex items-center space-x-4">
         <SignedIn>
           <>
-            <Link href="/update-products" className="relative">
+            <Link href="/update-products" className="relative link">
               Edit products
             </Link>
-            <Link href="/add-product" className="relative">
+            <Link href="/add-product" className="relative link">
               Add Product
             </Link>
           </>
         </SignedIn>
         <SignedOut>
           <>
-            <Link href="/sign-in" className="relative">
+            <Link href="/sign-in" className="relative link">
               Sign In
             </Link>
-            <Link href="/sign-up" className="relative">
+            <Link href="/sign-up" className="relative link">
               Sign Up
             </Link>
           </>
