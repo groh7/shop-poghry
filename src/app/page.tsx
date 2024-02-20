@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Product from "@/components/Product";
 import { useShopContext } from "@/providers/ShopContext";
-//import { auth } from "@clerk/nextjs";
 
 export default function Home() {
   const { user } = useShopContext();
