@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URL = "mongodb+srv://dostep:dostep@cluster0.xhl2rut.mongodb.net/shop";
+const MONGO_URL = process.env.MONGO_URL;
 
 const dbConnect = () => {
   if (mongoose.connection.readyState >= 1) {
