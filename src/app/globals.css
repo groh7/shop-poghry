@@ -249,4 +249,15 @@ h1 {
     margin: 20px;
   }
   
+  .navPrice {
+    font-size: 0.5em;
+  }
+
+  .icon{
+    padding-right:2px;
+  }
+
+  .cartIcon {
+    padding-right: 0;
+  }
   

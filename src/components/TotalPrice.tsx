@@ -14,8 +14,8 @@ const TotalPrice = () => {
     console.log("caty type:",cartType);
 
     return (
-        <span>
-            {total.toFixed(2)}
+        <span className="navPrice p-2">
+            {total.toFixed(2)} PLN
         </span>
     );
 };

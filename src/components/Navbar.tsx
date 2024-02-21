@@ -50,11 +50,11 @@ const Navbar = () => {
         </div>
         <div onClick={handleGoToProductsList}>
           <span className="cartIcon text-right text-white flex items-center justify-center">
-            (
-            <i>
+            
+            <i className="icon">
               <FiShoppingCart size={24} />
             </i>
-            {typeof cart === "string" ? JSON.parse(cart).length : cart.length})
+            {typeof cart === "string" ? JSON.parse(cart).length : cart.length}
             <TotalPrice />
           </span>
         </div>
