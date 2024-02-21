@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <div className="navbar flex justify-between items-center p-4">
       <div className="flex items-center">
-        <Link href="/" className="relative link font-bold text-xl">
+        <Link href="/">
         <Image
             src="/logo.png"
             width={200}
