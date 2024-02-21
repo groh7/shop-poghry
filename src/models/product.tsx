@@ -41,6 +41,7 @@ const productSchema = new mongoose.Schema<SchemaType>(
     photo: {
       type: String,
       required: false,
+      default: '/placoholder.png'
     },
     availability: {
       type: Number,
