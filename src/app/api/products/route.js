@@ -107,31 +107,21 @@ export async function PUT(req, res) {
   }
 }
 
-// stripe
-export async function POST(req, res) {
-  console.log("Connected to checkout");
+export async function DELETE(req, res) {
+  dbConnect();
 
-  const { products } = req.json();
+  const { id } = await req.json()
+  
+  try {
+    const product = await Product.findOneAndDelete({ id });
 
-  const lineItems = products.map((product)=>({
-    price_data: {
-      currency: "pln",
-      product_data:{
-       name: product.name
-      },
-      unit_amount: product.price * 100,
-    },
-    quantity: product.quantity || 1
-  }));
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found' });
+    }
 
-  const session = await stripe.checkout.session.create({
-    payment_method_types:["card"],
-    line_iteams:lineItems,
-    mode:"payment",
-    success_url:"http://localhost:3000/",
-    cancel_url:"http://localhost:3000/"
-  });
-
-  return res.json({id: session.id});
-
+    return res.status(200).json({ message: 'Product deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting product:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
 }

@@ -50,6 +50,29 @@ function Product({ product }: any) {
     location.reload()
   }
 
+  const deleteProduct = async () => {
+    if (editedProduct && editedProduct.id === product.id) {
+      try {
+        const response = await fetch(`http://localhost:3000/api/products`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(editedProduct)
+        })
+        if (!response.ok) {
+          console.error('Failed to delete product:', response.statusText)
+        }
+      } catch (error) {
+        console.error('Error deleting product:', error)
+      }
+    }
+    setEditedProduct(null)
+    location.reload()
+  };
+
+
+
 
   return (
     <div className="w-1/4 p-4">
@@ -79,12 +102,16 @@ function Product({ product }: any) {
             <button onClick={saveChanges} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 focus:outline-none">
               Save Changes
             </button>
+            <button onClick={deleteProduct} className="bg-red-500 mt-2 text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none">
+              Delete Product
+            </button>
           </>
         ) : (
           <button onClick={handleProductEdit} className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none">
             Edit Product
           </button>
         )}
+        
       </div>
     </div>
   );
