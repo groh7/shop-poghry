@@ -111,9 +111,9 @@ export async function PUT(req, res) {
 export async function POST(req, res) {
   console.log("Connected to checkout");
 
-  const {product} = req.body;
+  const { products } = req.json();
 
-  const lineIteams = product.map((product)=>({
+  const lineItems = products.map((product)=>({
     price_data: {
       currency: "pln",
       product_data:{
@@ -121,17 +121,17 @@ export async function POST(req, res) {
       },
       unit_amount: product.price * 100,
     },
-    quantity: product.quantity?product.quantity : 1
+    quantity: product.quantity || 1
   }));
 
   const session = await stripe.checkout.session.create({
     payment_method_types:["card"],
-    line_iteams:lineIteams,
+    line_iteams:lineItems,
     mode:"payment",
-    success_url:"",
-    cancel_url:""
+    success_url:"http://localhost:3000/",
+    cancel_url:"http://localhost:3000/"
   });
 
-  res.json({id:session.id});
+  return res.json({id: session.id});
 
 }

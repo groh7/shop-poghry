@@ -40,11 +40,11 @@ const ProductsList: React.FC<JSX.Element> = () => {
     const productsArrayOfArrays = products.map((product:ProductType) => [product.name, product.price]);
 
     const body = {
-      products: productsArrayOfArrays
+      products: products
     };
 
     const headers = {
-      "Content-Type":"application/json"
+      'Content-Type': 'application/json'
     }
 
     console.log('Trying to connect to checkout');
@@ -55,11 +55,13 @@ const ProductsList: React.FC<JSX.Element> = () => {
     const strigifiedBody = JSON.stringify(body);
     
     // try{
-      const response = await fetch('http://localhost:3000/api/products',{
+      const response = await fetch("http://localhost:3000/api/checkout",{
         method:"POST",
         headers:headers,
-        body:strigifiedBody
+        body:JSON.stringify(body)
       })
+
+      //console.log(response.json());
 
       const session = await response.json();
 
