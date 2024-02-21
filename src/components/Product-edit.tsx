@@ -45,11 +45,11 @@ function Product({ product }: any) {
         console.error('Error updating product:', error)
       }
     }
-  
     setEditedProduct(null)
     //pokazuje się error 500, ale po restarcie strony i tak działa. nie pytam.
     location.reload()
   }
+
 
   return (
     <div className="w-1/4 p-4">
