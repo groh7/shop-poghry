@@ -4,12 +4,10 @@ import { useRouter } from "next/navigation";
 import { FiShoppingCart } from "react-icons/fi";
 import { UserButton } from "@clerk/nextjs";
 import { ShopContext } from "@/providers/ShopContext";
-//import { auth } from '@clerk/nextjs';
 import { SignedIn } from "@clerk/nextjs";
 import { SignedOut } from "@clerk/nextjs";
 
 const Navbar = () => {
-  // const { user } = auth();
   const { user, cart } = useContext(ShopContext);
   const router = useRouter();
 
@@ -28,11 +26,11 @@ const Navbar = () => {
       <div className="flex items-center space-x-4">
         <SignedIn>
           <>
-            <Link href="/update-products" className="relative link">
-              Edit products
-            </Link>
             <Link href="/add-product" className="relative link">
               Add Product
+            </Link>
+            <Link href="/update-products" className="relative link">
+              Edit products
             </Link>
           </>
         </SignedIn>

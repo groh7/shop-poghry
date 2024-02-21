@@ -13,14 +13,15 @@ function Product({ product }: any) {
       if (productIndex === -1) {
         setCart([...cart, product]);
       } else {
-        setCart((prevCart: any) => prevCart.map((item: any) => (item.id === product.id ? { ...item, quantity: (item.quantity || 1) + 1 } : item)));
+        // If the product is already in the cart, remove it
+        setCart((prevCart: any) => prevCart.filter((item: any) => item.id !== product.id));
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  if(cart.findIndex((item: any) => item._id === product._id) != -1) {
+  if(cart.findIndex((item: any) => item._id === product._id) !== -1) {
     buttonStyle = "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none";
     buttonText = "In cart";
   }
