@@ -55,7 +55,6 @@ const Navbar = () => {
             <i>
               <FiShoppingCart size={24} />
             </i>
-            {console.log(cart)}
             {typeof cart === "string" ? JSON.parse(cart).length : cart.length})
           </span>
         </div>
