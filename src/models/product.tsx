@@ -10,13 +10,13 @@ export type SchemaType = {
 };
 
 export type ProductType = {
-  id: String;
-  name: String;
-  description: String;
-  price: Number;
-  photo: String;
-  availability: Number;
-  quantity?: Number;
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  photo: string;
+  availability: number;
+  quantity?: number;
 };
 
 

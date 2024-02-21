@@ -1,16 +1,17 @@
 "use client";
+import {ProductType} from "@/models/product";
 
 import React, { createContext, useState, useContext } from "react";
 
-export type ProductType = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  photo: string;
-  availability: number;
-  quantity?: number;
-};
+// export type ProductType = {
+//   id: string;
+//   name: string;
+//   description: string;
+//   price: number;
+//   photo: string;
+//   availability: number;
+//   quantity?: number;
+// };
 
 // change any to cartProps etc.
 export const ShopContext = createContext<any>([]);
