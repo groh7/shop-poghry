@@ -7,6 +7,7 @@ import { ShopContext } from "@/providers/ShopContext";
 import { SignedIn } from "@clerk/nextjs";
 import { SignedOut } from "@clerk/nextjs";
 import TotalPrice from "./TotalPrice";
+import Image from 'next/image'
 
 const Navbar = () => {
   const { user, cart } = useContext(ShopContext);
@@ -21,7 +22,12 @@ const Navbar = () => {
     <div className="navbar flex justify-between items-center p-4">
       <div className="flex items-center">
         <Link href="/" className="relative link font-bold text-xl">
-          <div className="w-80 ">SKLEP</div>
+        <Image
+            src="/logo.png"
+            width={200}
+            height={32}
+            alt="SKLEP LOGO"
+          />
         </Link>
       </div>
       <div className="flex items-center space-x-4">
