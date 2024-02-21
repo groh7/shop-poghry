@@ -7,6 +7,7 @@ import { ShopContext } from "@/providers/ShopContext";
 //import { auth } from '@clerk/nextjs';
 import { SignedIn } from "@clerk/nextjs";
 import { SignedOut } from "@clerk/nextjs";
+import TotalPrice from "./TotalPrice";
 
 const Navbar = () => {
   // const { user } = auth();
@@ -56,6 +57,7 @@ const Navbar = () => {
               <FiShoppingCart size={24} />
             </i>
             {typeof cart === "string" ? JSON.parse(cart).length : cart.length})
+            <TotalPrice />
           </span>
         </div>
       </div>
