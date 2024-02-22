@@ -37,7 +37,7 @@ const ProductsList: React.FC<JSX.Element> = () => {
 
   // stripe
   const createCheckoutSession = async () => {
-    const stripe = await loadStripe("your_stripe_public_key");
+    const stripe = await loadStripe(String(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY));
     
     const body = {
       products: products
