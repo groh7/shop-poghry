@@ -260,4 +260,52 @@ h1 {
   .cartIcon {
     padding-right: 0;
   }
+
+  .addItem-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 80px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  .submit {
+    margin-top: 30px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: 0.2s;
+  }
+  
+  .submit:hover {
+    background-color: #0056b3;
+    border-bottom: 1px solid black;
+  }
+  
   
